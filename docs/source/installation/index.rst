@@ -1,5 +1,5 @@
-Spacewalk Installation Guide
-============================
+Installation Guide
+==================
 
 Contents:
 
