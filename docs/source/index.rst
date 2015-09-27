@@ -15,6 +15,7 @@ Contents:
 
    release_notes/index
    installation/index
+   upgrade/index
    getting_started/index
    client_configuration/index
    user/index
