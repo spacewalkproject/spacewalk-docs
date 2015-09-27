@@ -1,0 +1,4 @@
+.. _upgrade-2.2-to-2.3:
+
+Upgrading from Spacewalk 2.2 to 2.3
+===================================
