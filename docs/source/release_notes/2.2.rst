@@ -152,6 +152,7 @@ Our thanks go to the community members who contributed to this release:
 https://fedorahosted.org/spacewalk/wiki/ContributorList
 
 Some statistics
+---------------
 
 In Spacewalk 2.2, we've seen
 
