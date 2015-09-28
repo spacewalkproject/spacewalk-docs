@@ -1,4 +1,4 @@
-Spacewalk Release Notes 0.8
+Spacewalk 0.8 Release Notes
 ===========================
 
 Spacewalk 0.8 has been released!

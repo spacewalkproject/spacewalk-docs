@@ -1,4 +1,4 @@
-Spacewalk Release Notes 1.0
+Spacewalk 1.0 Release Notes
 ===========================
 
 Spacewalk 1.0 has been released!

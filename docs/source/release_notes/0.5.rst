@@ -1,4 +1,4 @@
-Spacewalk Release Notes 0.5
+Spacewalk 0.5 Release Notes
 ===========================
 
 The Spacewalk team is happy to announce another release of Spacewalk. In a few hours, Spacewalk 0.5 will be available for install. As with previous releases, 0.3 will no longer be available.

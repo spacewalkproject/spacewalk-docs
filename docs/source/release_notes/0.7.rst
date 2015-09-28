@@ -1,4 +1,4 @@
-Spacewalk Release Notes 0.7
+Spacewalk 0.7 Release Notes
 ===========================
 
 Spacewalk 0.7 is finally here!
