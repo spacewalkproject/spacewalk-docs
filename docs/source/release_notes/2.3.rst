@@ -39,7 +39,7 @@ Features & Enhancements in Spacewalk 2.3
 
 * Spacewalk now supported on RHEL7/CentOS7/Fedora21
 * Spacewalk supports Fedora21 clients
-* Addition of spacewalk-setup-ipa-authentication to make the external authentication setup easier.
+* Addition of ``spacewalk-setup-ipa-authentication`` to make the external authentication setup easier.
 
   * https://fedorahosted.org/spacewalk/wiki/SpacewalkAndIPA
 
@@ -55,24 +55,24 @@ Features & Enhancements in Spacewalk 2.3
 
 * Plenty of small enhancements and fixes
 
-  * spacecmd enhancements:
+  * ``spacecmd`` enhancements:
 
-     * softwarechannel_errata
-     * configchannel_sync
-     * softwarechannel_sync
-     * softwarechannel_removesyncschedule
+     * ``softwarechannel_errata``
+     * ``configchannel_sync``
+     * ``softwarechannel_sync``
+     * ``softwarechannel_removesyncschedule``
 
   * spacewalk-clone-by-date enhancements:
 
-    * added a --dry-run option
+    * added a ``--dry-run`` option
     * improved dependency resolution (see 1123468)
     * removed asynchronous background cloning - it conflicts (badly) with dependency resolution, see 1207846
 
-  * spacewalk-reports additions:
+  * ``spacewalk-reports`` additions:
 
-    * config-files
-    * config-files-latest
-    * additional data to scap-scan report
+    * ``config-files``
+    * ``config-files-latest``
+    * additional data to ``scap-scan`` report
 
   * Added support for xz-compressed repositories
   * Added Korea to list of timezones

@@ -1,0 +1,4 @@
+.. _upgrade-1.6-to-1.7:
+
+Upgrading from Spacewalk 1.6 to 1.7
+===================================
