@@ -25,11 +25,11 @@ SUSE Linux client packages can be found here
 
 For fresh installations, please use steps from
 
-* https://fedorahosted.org/spacewalk/wiki/HowToInstall
+* :ref:`installation-guide`
 
 If you plan to upgrade from older release, search no more -- the following page will guide you:
 
-* http://fedorahosted.org/spacewalk/wiki/HowToUpgrade
+* :ref:`upgrade-2.0-to-2.1`
 
 Features & Enhancements in Spacewalk 2.1
 ----------------------------------------
