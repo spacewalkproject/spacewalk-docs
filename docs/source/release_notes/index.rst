@@ -1,109 +1,93 @@
 Release Notes
 =============
 
-We are proudly announcing release of Spacewalk 2.2, a systems management solution.
+We are proudly announcing release of Spacewalk 2.3, a systems management solution.
 
 The download locations are
 
-* http://yum.spacewalkproject.org/2.2/RHEL/5/
-* http://yum.spacewalkproject.org/2.2/RHEL/6/
-* http://yum.spacewalkproject.org/2.2/Fedora/19/
-* http://yum.spacewalkproject.org/2.2/Fedora/20/
+* http://yum.spacewalkproject.org/2.3/RHEL/6/
+* http://yum.spacewalkproject.org/2.3/RHEL/7/
+* http://yum.spacewalkproject.org/2.3/Fedora/20/
+* http://yum.spacewalkproject.org/2.3/Fedora/21/
 
 with client repositories under
 
-* http://yum.spacewalkproject.org/2.2-client/RHEL/5/
-* http://yum.spacewalkproject.org/2.2-client/RHEL/6/
-* http://yum.spacewalkproject.org/2.2-client/RHEL/7/
-* http://yum.spacewalkproject.org/2.2-client/Fedora/19/
-* http://yum.spacewalkproject.org/2.2-client/Fedora/20/
+* http://yum.spacewalkproject.org/2.3-client/RHEL/5/
+* http://yum.spacewalkproject.org/2.3-client/RHEL/6/
+* http://yum.spacewalkproject.org/2.3-client/RHEL/7/
+* http://yum.spacewalkproject.org/2.3-client/Fedora/20/
+* http://yum.spacewalkproject.org/2.3-client/Fedora/21/
 
 SUSE Linux client packages can be found here
 
-* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.2/SLE_11_SP3/
-* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.2/openSUSE_12.3/
-* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.2/openSUSE_13.1/
-* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.2/openSUSE_Factory/
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.3/openSUSE_13.1/
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.3/openSUSE_13.2/
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.3/openSUSE_Tumbleweed/
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.3/SLE_12/
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.3/SLE_11_SP3/
 
-Features & Enhancements in Spacewalk 2.2
+Features & Enhancements in Spacewalk 2.3
 ----------------------------------------
 
-* Spacewalk supports RHEL 7 / CentOS 7 clients
-* Read-only API user
-
-  * support for user able to retrieve data via API without the rights to make changes (e.g. for auditing purposes)
-
-* Action chaining
-
-  * support for defining chain of actions executed on clients
-  * http://wiki.novell.com/index.php/SUSE_Manager/ActionChaining
-  * Video: http://turing.suse.de/%7Esmoioli/Action%20Chaining%20screencast.webm
-
-* Remote power management
-
-  * https://fedorahosted.org/spacewalk/wiki/power-management
-
-* Support for FIPS 140-2
-
-  * Ability to run on a FIPS enabled operating system (client and server)
-  * https://fedorahosted.org/spacewalk/wiki/Spacewalk-FIPS
-
-* Spacewalk Proxy content pre-caching
-
-  * https://fedorahosted.org/spacewalk/wiki/proxy-precache
-
-* Further enhancements to the Spacewalk 2.1 Identity management (IPA) integration
+* Spacewalk now supported on RHEL7/CentOS7/Fedora21
+* Spacewalk supports Fedora21 clients
+* Addition of ``spacewalk-setup-ipa-authentication`` to make the external authentication setup easier.
 
   * https://fedorahosted.org/spacewalk/wiki/SpacewalkAndIPA
-  * mark roles that were assigned automatically and should thus be removed if not found upon subsequent logins
-  * creating default system groups when creating new users
-  * external groups to system groups mapping (newly created users may be created as administrators of selected system groups - according to their external group membership and configured mapping)
+
+* Improved Proxy caching of yum meta-data with addition of If-Modified-Since header support
+* Community contribution to support for using external Oracle 12c. (Please note that this is provided as-is and not tested by the core team.)
+* Continued UI polish and improvements, including standardizing on Patternfly
+* Improved and simplified codebase by:
+
+  * Removing all Monitoring-related code
+  * Removing all Solaris support
+  * Completing the port of the web-UI from Perl to Java
+  * Cleaning up and removing large chunks of orphaned code
 
 * Plenty of small enhancements and fixes
+
+  * ``spacecmd`` enhancements:
+
+     * ``softwarechannel_errata``
+     * ``configchannel_sync``
+     * ``softwarechannel_sync``
+     * ``softwarechannel_removesyncschedule``
+
+  * spacewalk-clone-by-date enhancements:
+
+    * added a ``--dry-run`` option
+    * improved dependency resolution (see 1123468)
+    * removed asynchronous background cloning - it conflicts (badly) with dependency resolution, see 1207846
+
+  * ``spacewalk-reports`` additions:
+
+    * ``config-files``
+    * ``config-files-latest``
+    * additional data to ``scap-scan`` report
+
+  * Added support for xz-compressed repositories
+  * Added Korea to list of timezones
+  * aarch64 support
+
 * New API calls:
 
-  * ``actionchain.addConfigurationDeployment``
-  * ``actionchain.addPackageInstall``
-  * ``actionchain.addPackageRemoval``
-  * ``actionchain.addPackageUpgrade``
-  * ``actionchain.addPackageVerify``
-  * ``actionchain.addScriptRun``
-  * ``actionchain.addSystemReboot``
-  * ``actionchain.createChain``
-  * ``actionchain.deleteChain``
-  * ``actionchain.listChainActions``
-  * ``actionchain.listChains``
-  * ``actionchain.removeAction``
-  * ``actionchain.renameChain``
-  * ``actionchain.scheduleChain``
-  * ``channel.software.syncRepo``
-  * ``kickstart.profile.software.getSoftwareDetails``
-  * ``kickstart.profile.software.setSoftwareDetails``
-  * ``systemgroup.listSystemsMinimal``
-  * ``system.listSystemEvents``
-  * ``system.provisioning.snapshot.rollbackToSnapshot``
-  * ``system.provisioning.snapshot.rollbackToTag``
-  * ``system.scheduleCertificateUpdate``
-  * ``system.schedulePackageInstall``
-  * ``user.external.createExternalGroupToRoleMap``
-  * ``user.external.createExternalGroupToSystemGroupMap``
-  * ``user.external.deleteExternalGroupToRoleMap``
-  * ``user.external.deleteExternalGroupToSystemGroupMap``
-  * ``user.external.getDefaultOrg``
-  * ``user.external.getExternalGroupToRoleMap``
-  * ``user.external.getExternalGroupToSystemGroupMap``
-  * ``user.external.getKeepTemporaryRoles``
-  * ``user.external.getUseOrgUnit``
-  * ``user.external.listExternalGroupToRoleMaps``
-  * ``user.external.listExternalGroupToSystemGroupMaps``
-  * ``user.external.setDefaultOrg``
-  * ``user.external.setExternalGroupRoles``
-  * ``user.external.setExternalGroupSystemGroups``
-  * ``user.external.setKeepTemporaryRoles``
-  * ``user.external.setUseOrgUnit``
-  * ``user.getCreateDefaultSystemGroup``
-  * ``user.setCreateDefaultSystemGroup``
-  * ``user.setReadOnly``
+  * ``activationkey.clone``
+  * ``configchannel.deployAllSystems``
+  * ``kickstart.listKickstartableTreeChannels``
+  * ``kickstart.profile.getAvailableRepositories``
+  * ``kickstart.profile.getRepositories``
+  * ``kickstart.profile.getVirtualizationType``
+  * ``kickstart.profile.setRepositories``
+  * ``kickstart.profile.setVirtualizationType``
+  * ``system.unentitle``
+  * ``user.setErrataNotifications``
+
+* Removed API calls:
+
+  * ``proxy.createMonitoringScout``
+  * ``satellite.isMonitoringEnabled``
+  * ``satellite.isMonitoringEnabledBySystemId``
 
 The up-to-date API documentation can be found at http://www.spacewalkproject.org/documentation/api/
 
@@ -112,33 +96,47 @@ Contributors
 
 Our thanks go to the community members who contributed to this release:
 
+* Anastasios Papaioannou
+* Aron Parsons
 * Avi Miller
 * Bo Maryniuk
-* Carsten Menzel
-* Colin Coe
-* Daniel Igel
+* Cynthia Sanchez
+* David Holland
 * Dimitar Yordanov
-* Duncan Mac-Vicar
+* Duncan Mac-Vicar P
 * Flavio Castelli
 * Gregor Gruener
-* Hubert Mantel
+* Ian Forde
+* Jan Hutar
 * Jan Pazdziora
-* Jeremy Davis
 * Jiri Mikulka
+* Joerg Steffens
 * Johannes Renner
-* Kumudini Shirsale
+* Kilian Petsch
+* Lasse Palm
+* lbayerlein
+* Ludwig
 * Lukas Pramuk
 * Marcelo Moreira de Mello
 * Martin Seidl
+* Mathieu Bridon
 * Michael Calmer
-* Michele Baldessari
+* Michael Kromer
+* Michael Mraka
+* Micha Lenk
+* Milan Zazrivec
 * Miroslav Suchý
 * Neha Rawat
-* Pierre Casenove
-* Ron van der Wees
+* Patrick Hurrelmann
+* Paul Wayper
+* Pavel Studenik
+* Peter Gervase
+* Robert Moser II
+* Satoru SATOH
 * Shannon Hughes
 * Silvio Moioli
 * Tasos Papaioannou
+* Tim Speetjens
 * Tobias D. Oestreicher
 
 https://fedorahosted.org/spacewalk/wiki/ContributorList
@@ -146,25 +144,25 @@ https://fedorahosted.org/spacewalk/wiki/ContributorList
 Some statistics
 ---------------
 
-In Spacewalk 2.2, we've seen
+In Spacewalk 2.3, we've seen
 
-* 99 bugs fixed
-* 1308 changesets committed
-* 1760 commits done
+* 220 bugs fixed
+* 1247 changesets committed
+* 1878 commits done
 
-Github repo for commits since Spacewalk 2.1
+Github repo for commits since Spacewalk 2.2
 
-* `Spacewalk 2.1 to 2.2 <https://github.com/spacewalkproject/spacewalk/graphs/contributors?from=2014-03-04&to=2014-07-16&type=c>`_
+* `Spacewalk 2.2 to 2.3 <https://github.com/spacewalkproject/spacewalk/graphs/contributors?from=2014-07-17&to=2015-03-27&type=c>`_
 
-Spacewalk 2.2 on RHEL 5 (CentOS 5) and RHEL 7 (CentOS 7)
---------------------------------------------------------
+Spacewalk 2.3 on RHEL 5 (CentOS 5)
+----------------------------------
 
-Due to missing package dependencies in EPEL 7 beta, we were not able to deliver Spacewalk 2.2 on RHEL 7 (CentOS 7). Spacewalk 2.2 therefore still supports running on RHEL 5 and CentOS 5 as a base operating system. Support for RHEL 7 and CentOS 7 should be available in next Spacewalk release, at which point support for RHEL 5 and CentOS 5 will be dropped. Note that RHEL 7 / CentOS 7 clients are supported with Spacewalk 2.2, just not running Spacewalk itself on those operating systems.
+With the addition of installation-support on RHEL7/CentOS7, Spacewalk is now no longer supported running on RHEL5/CentOS5
 
-Solaris and Monitoring Support - Deprecation Notice
----------------------------------------------------
+Solaris and Monitoring Support - Removal Notice
+-----------------------------------------------
 
-The Spacewalk team is looking in future releases to drop support for Solaris clients and the Monitoring component of Spacewalk. They continue to be supported in their current state for the Spacewalk 2.2 release. Anyone currently using either of the capabilities may wish to consider alternatives for their needs.
+The Spacewalk team has dropped code for Solaris clients and the Monitoring component of Spacewalk. Anyone currently using either of the capabilities will need to consider alternatives for their needs prior to upgrading to 2.3.
 
 User community, reporting issues
 --------------------------------
