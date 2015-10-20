@@ -1,72 +1,74 @@
 Release Notes
 =============
 
-Spacewalk 1.3 is now available for download from
+Spacewalk 1.4 is now available for download from
 
-* http://spacewalk.redhat.com/yum/1.3/RHEL/5/$basearch/
-* http://spacewalk.redhat.com/yum/1.3/RHEL/6/$basearch/
-* http://spacewalk.redhat.com/yum/1.3/Fedora/13/$basearch/
-* http://spacewalk.redhat.com/yum/1.3/Fedora/14/$basearch/
+* http://spacewalk.redhat.com/yum/1.4/RHEL/5/$basearch/
+* http://spacewalk.redhat.com/yum/1.4/RHEL/6/$basearch/
+* http://spacewalk.redhat.com/yum/1.4/Fedora/13/$basearch/
+* http://spacewalk.redhat.com/yum/1.4/Fedora/14/$basearch/
 
 depending on your operating system, with client repositories under
 
-* http://spacewalk.redhat.com/yum/1.3-client/
+* http://spacewalk.redhat.com/yum/1.4-client/Fedora/13
+* http://spacewalk.redhat.com/yum/1.4-client/Fedora/14
+* http://spacewalk.redhat.com/yum/1.4-client/RHEL/5
+* http://spacewalk.redhat.com/yum/1.4-client/RHEL/6
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.4/openSUSE_11.4/
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.4/openSUSE_Factory/
+* http://miroslav.suchy.cz/spacewalk/debian
 
-Features & Enhancements in Spacewalk 1.3
+Features & Enhancements in Spacewalk 1.4
 ----------------------------------------
 
-* Spacewalk can now be installed and run on RHEL 6
-* Server side support for ``apt-get``
-* Spacewalk on PostgreSQL can be upgraded from older versions
-* Spacewalk on Oracle now uses `Oracle Instant Client <http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html>`_ version 11g
-* Spacewalk Proxy works with Spacewalk on PostgreSQL
-* ``tnsnames.ora`` file no longer needed
-* New API calls:
+* client packages for Debian
+* client packages for OpenSuse
 
-  * ``system.getUuid``
-  * ``system.search.uuid``
-  * ``errata.publishAccordingToParents``
+  * support for `IDN <http://en.wikipedia.org/wiki/Internationalized_domain_name>`_ (but RHN Tools part)
 
-* Extended API calls:
-  * ``system.listPackages`` by ``id``
-  * ``channel.software.getDetails``, ``channel.software.listChildren``, ``kickstart.listKickstartableChannels``, ``system.listSubscribedChildChannels``, ``system.getSubscribedBaseChannel`` by ``last_modified``
+* you can now have Spacewalk server and clients, whose hostnames contains non latin domain name.
+* issues in PostgreSQL backend, reported by user, were fixed. 
 
-Some notes about apt-get plug-in
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * `PostgreSQL status <https://fedorahosted.org/spacewalk/wiki/PostgreSQL>`_
 
-Spacewalk 1.3 contains server support for ``apt-get`` plug-in. An experimental ``apt-get`` plug-in client package is available at http://miroslav.suchy.cz/spacewalk/debian/ Feel free to try it and report any issues. This plug-in package will be enhanced during the Spacewalk 1.4 cycle.
+* system history reports were added in ``spacewalk-reports``
+* ``spacewalk-repo-sync`` now automatically create errata from updateinfo
 
-For more information check: `RegisteringClients <https://fedorahosted.org/spacewalk/wiki/RegisteringClients#Debian>`_
+Spacewalk 1.4 contains support for ``apt-get`` plug-in. An ``apt-get`` plug-in client package is available at http://miroslav.suchy.cz/spacewalk/debian/
 
-Some notes about the PostgreSQL support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Feel free to try it and report any issues. This repo contains apt with spacewalk patches.
 
-PostgreSQL support is limited similar to Spacewalk 1.2.
-
-* `PostgreSQL <https://fedorahosted.org/spacewalk/wiki/PostgreSQL>`_
+For more information check: https://fedorahosted.org/spacewalk/wiki/RegisteringClients#Debian
 
 Community contributors
 ----------------------
 
 We thank the community members who contributed to this release:
 
-* Ani Peter
 * Aron Parsons
-* Colin Coe
-* Luc de Louw
+* Dale Bewley
+* Jerome Fenal
 * Johannes Renner
 * John van Zantvoort
+* Luc de Louw
 * Marcelo Moreira de Mello
+* mareklaane
+* Michael Calmer
 * Paresh Mutha
-* Simon Lukasik
+* Šimon Lukašík
+* Trent Johnson
+* Uwe Gansert
+* ypoyarko
 
 https://fedorahosted.org/spacewalk/wiki/ContributorList
 
 Bug fixes and commits
 ---------------------
 
-In Spacewalk 1.3 there were:
+In Spacewalk 1.4 there were:
 
-* 123 bugs solved
-* 964 changesets committed
-* 1275 commits done
+* 68 bugs solved
+* 634 changesets committed
+* 899 commits done
+
+Enjoy using Spacewalk!
