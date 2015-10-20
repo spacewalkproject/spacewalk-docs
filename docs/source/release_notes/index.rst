@@ -1,86 +1,85 @@
 Release Notes
 =============
 
-Spacewalk 1.1 has been released!
+Spacewalk 1.2 is now available for download from
 
-Server:
+* http://spacewalk.redhat.com/yum/1.2/RHEL/5/$basearch/
+* http://spacewalk.redhat.com/yum/1.2/Fedora/12/$basearch/
+* http://spacewalk.redhat.com/yum/1.2/Fedora/13/$basearch/
+* http://spacewalk.redhat.com/yum/1.2/Fedora/14/$basearch/
 
-* http://spacewalk.redhat.com/yum/1.1/RHEL/5/<arch>/
-* http://spacewalk.redhat.com/yum/1.1/Fedora/12/<arch>/
-* http://spacewalk.redhat.com/yum/1.1/Fedora/13/<arch>/
+depending on your operating system, with client repositories under
 
-Client:
+* http://spacewalk.redhat.com/yum/1.2-client/
 
-* http://spacewalk.redhat.com/yum/1.1-client/RHEL/5/<arch>/
-* http://spacewalk.redhat.com/yum/1.1-client/Fedora/12/<arch>/
-* http://spacewalk.redhat.com/yum/1.1-client/Fedora/13/<arch>/
+Features & Enhancements in Spacewalk 1.2
+----------------------------------------
 
-Features and enhancements
--------------------------
+* Support for re-provisioning of FV Xen & KVM guests was added.
+* Large rpm support fixes.
+* Fixes to ``spacewalk-repo-sync``.
+* Staging content (prefetching content to clients in advance) made more solid.
+* Multiple WebUI pages were ported from Perl to Java.
+* Localization extended.
+* PostgreSQL database backend can be used for limited operation.
+* Spacewalk 1.2 runs on Fedora 14.
+* Updated and new API calls:
 
-* First Spacewalk release built in a `publicly available build system <http://koji.spacewalkproject.org/koji>`_.
-* Spacewalk 1.1 runs on Fedora 13
-* Introduction of `spacecmd <https://fedorahosted.org/spacewalk/wiki/spacecmd>`_, a command line interface to Spacewalk.
-* Support for `synchronization of comps files <https://fedorahosted.org/spacewalk/wiki/Features/CompsSyncing>`_.
-* support for staging content - ability to have all updates pulled off Spacewalk onto registered systems prior to the start of maintenance window
-* support for `eliminating orphaned (duplicate) profiles <https://fedorahosted.org/spacewalk/wiki/DuplicateProfiles>`_.
-* new API calls:
+  * ``configchannel.lookupFileInfo``
+  * ``configchannel.createOrUpdateSymlink``
+  * ``channel.software.createRepo``
+  * ``channel.software.associateRepo``
+  * ``channel.software.getRepoDetails``
+  * ``channel.software.updateRepo``
+  * ``channel.software.updateRepoUrl``
+  * ``channel.software.updateRepoLabel``
+  * ``channel.software.disassociateRepo``
+  * ``channel.software.removeRepo``
+  * ``channel.software.listUserRepos``
+  * ``channel.software.removeErrata``
+  * ``satellite.isMonitoringEnabled``
+  * ``satellite.isMonitoringEnabledBySystemId``
+  * ``schedule.archiveActions``
+  * ``system.getSystemCurrencyMultipliers``
+  * ``system.getSystemCurrencyScores``
+  * channel output now shows all associated repos
 
-  * ``channel.software.getChannelLastBuildById``
-  * ``configchannel.listSubscribedSystems``
-  * ``kickstart.profile.downloadRenderedKickstart``
-  * ``org.setSoftwareFlexEntitlements``
-  * ``schedule.rescheduleActions``
-  * ``system.convertToFlexEntitlement``
-  * ``system.deletePackageProfile``
-  * ``system.deleteSystem``
-  * ``system.listDuplicatesByHostname``
-  * ``system.listDuplicatesByIp``
-  * ``system.listDuplicatesByMac``
-  * ``system.listEligibleFlexGuests``
-  * ``system.listFlexGuests``
-  * ``system.listLatestAvailablePackage``
-  * ``system.listPackageProfiles``
-  * ``systemgroup.scheduleApplyErrataToActive``
+Spacewalk 1.2 is the last version to run on Fedora 12.
 
-* localization updates
+Some notes about the PostgreSQL support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Known issues
-------------
+We've been fixing bits and pieces that prevented Spacewalk to use PostgreSQL database server to store the data. Currently known to work are:
 
-* Wrong tomcat6 directory permissions on Fedora 13
+* content sync with satellite-sync and spacewalk-repo-sync;
+* rhnpush;
+* client registration;
+* yum operations.
 
-  * https://bugzilla.redhat.com/show_bug.cgi?id=574593
-  * https://bugzilla.redhat.com/show_bug.cgi?id=586364
-  * https://bugzilla.redhat.com/show_bug.cgi?id=605335
+So it is possible to use Spacewalk on PostgreSQL to manage the rpm packages on your machines. For the above mentioned areas, please use bugzilla to report the bugs just like you would normally do.
 
-* workaround:
+The PostgreSQL port is however far from complete, so sooner than later you will encouncer weird behavior or Internal Server Error, especially if you use functionality not listed above. For that we will appreciate patch rather than bugzilla report -- we know these do not work and we need help. If you are ready to code, please check
 
-  * ``chmod g+w /var/log/tomcat6 /etc/tomcat6/Catalina/localhost /var/cache/tomcat6 /var/cache/tomcat6/temp /var/cache/tomcat6/work``
+* `PostgreSQL <https://fedorahosted.org/spacewalk/wiki/PostgreSQL>`_
+* `PostgreSQLPortingGuide <https://fedorahosted.org/spacewalk/wiki/PostgreSQLPortingGuide>`_
 
-* cobbler - related SELinux denials on Fedora 12 and Fedora 13:
+Community contributors
+----------------------
 
-  * https://bugzilla.redhat.com/show_bug.cgi?id=620503
-  * https://bugzilla.redhat.com/show_bug.cgi?id=621095
-  * solution: install updated selinux-policy-targeted as noted in the above bugs
+We thank the community members who contributed to this release:
 
-* Deprecation warning during osa-dispatcher start on Fedora 12 and Fedora 13:
-
-  * https://bugzilla.redhat.com/show_bug.cgi?id=621204
-  * https://bugzilla.redhat.com/show_bug.cgi?id=621206
-
-* Documentation search does not work, other searches are unaffected
-
-Contributors
-------------
-
-Thank you goes out to the following people who contributed to Spacewalk 1.1 release:
-
+* Ali Yousefi Sabzevar
 * Aron Parsons
 * Colin Coe
-* James Hogarth
+* Francesco Tombolini
+* Jaswinder Singh Phulewala
 * Joshua Roys
-* Lukas Durfina
-* Maxim Burgerhout
-* Paul Morgan
-* Satoru SATOH
+* KrishnaBabu Krothapalli
+* Luc de Louw
+* Manoj Kumar Giri
+* Timo Trinks
+* Yulia Poyarkova
+
+with special kudos to Colin Coe for his Java porting and API work.
+
+https://fedorahosted.org/spacewalk/wiki/ContributorList
