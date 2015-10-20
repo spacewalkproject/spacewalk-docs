@@ -1,5 +1,5 @@
-Spacewalk 0.6 Release Notes
-===========================
+Release Notes
+=============
 
 Spacewalk 0.6 is finally here! In a few hours, Spacewalk 0.6 will be available for installing. With this release, as with previous releases, Spacewalk 0.4 will no longer be available for download.
 
