@@ -1,60 +1,56 @@
-Release Notes
-=============
+Spacewalk 0.6 Release Notes
+===========================
 
-The Spacewalk team is happy to announce another release of Spacewalk. In a few hours, Spacewalk 0.5 will be available for install. As with previous releases, 0.3 will no longer be available.
+Spacewalk 0.6 is finally here! In a few hours, Spacewalk 0.6 will be available for installing. With this release, as with previous releases, Spacewalk 0.4 will no longer be available for download.
 
-NOTE: upgrades are not yet available for 0.5. We hope to have these instructions ready later this week.
-
-Also note, that the URL for the repo has changed. The *OLD* url was:
-
-* http://spacewalk.redhat.com/yum/0.4/rhel/5Server/<arch>
-* http://spacewalk.redhat.com/yum/0.4/fedora/9/<arch>
-
-The *NEW* url is:
-
-* http://spacewalk.redhat.com/yum/0.5/RHEL/5/<arch>/os/
-* http://spacewalk.redhat.com/yum/0.5/Fedora/10/<arch>/os/
+* http://spacewalk.redhat.com/yum/0.6/RHEL/5/<arch>/os/
+* http://spacewalk.redhat.com/yum/0.6/Fedora/10/<arch>/os/
+* http://spacewalk.redhat.com/yum/0.6/Fedora/11/<arch>/os/
 
 Features & Enhancements
 -----------------------
 
-* Spacewalk 0.5 is now installable on Fedora 10!!
-* repomd generation refactored to be a Taskomatic process
-* you can edit your pre/post kickstart scripts in our new scripts editor:
+* Spacewalk 0.6 is available for Fedora 11!
+* support for SHA256 in rpm
+* large (2+GB) rpm support (requires rpm 4.6)
+* ability to import a yum repo into a channel https://fedorahosted.org/spacewalk/wiki/UploadFedoraContent
+* `script based reporting <http://bit.ly/NyCrj>`_
+* hopefully a better jabberd experience than in Spacewalk 0.5
+* KVM support
+* and more APIs:
 
-  * http://tinyurl.com/editarea-ks-scripts
-
-* as well as edit cobbler snippets with the same editor:
-
-  * http://tinyurl.com/editarea-cobbler-snippets
-
-* more API work mostly in the channel.software namespace with bug fixes in other areas.
-
-  * https://fedorahosted.org/spacewalk/wiki/ApiAdditions
+  * ``errata.delete``
+  * ``channel.software.uploadPackage``
+  * ``monitoring.*``
+  * ``org.list*Entitlements``
+  * ``packages.getDetails``
+  * ``system.config.scheduleImport``
 
 Bugs fixed
 ----------
 
-This release `fixed 91 bugs <http://tinyurl.com/dmszqj>`_.
+This release `fixed approximately 100 bugs <http://bit.ly/14ahTW>`_
 
 Known issues
 ------------
 
-* NO UPGRADES AVAILABLE YET
-* jabberd 2.2 fails on el5 installs. if you want to use osa-dispatcher on el5, you need to do the following:
-
-  * uninstall jabberd 2.2
-  * install jabberd 2.0
-  * use 2.0 configs
-  * restart both jabberd and osa-dispatcher
+* PostgreSQL support does not work, but the infrastructure has been committed. We will need help with moving this forward.
+* Fedora GPG key not recognized by rhnPackageKey table, packages will show up as unknown Provider.
+* Documentation search does not work, other search are unaffected.
 
 Community
 ---------
 
-A special thanks goes out to Colin Coe for adding the ability to edit kickstart scripts and cobbler snippets in the UI, and to James Bowes for his patches to tito the spacewalk build tool
+We greatly appreciate the contributions the community has made to this release. Thank you very much.
 
-* http://fedorahosted.org/spacewalk/wiki/Tito
-* http://fedorahosted.org/spacewalk/wiki/ContributorList
+* Gurjeet Singh
+* Joshua Roys
+* Mark Chappell
+* Maxim Burgerhout
+* Muhammad Farrukh
+* Satoru SATOH
+* Tom Lane
+* Vikram Rai
 
-...it works on Fedora too :D
+http://fedorahosted.org/spacewalk/wiki/ContributorList
 
