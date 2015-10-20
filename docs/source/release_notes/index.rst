@@ -1,72 +1,96 @@
 Release Notes
 =============
 
-We are happy to announce the release 1.5 of Spacewalk, a systems management solution.
+We are happy to announce the release 1.6 of Spacewalk, platform for management of Linux systems.
 
 The download locations are
 
-* http://spacewalk.redhat.com/yum/1.5/RHEL/5/$basearch/
-* http://spacewalk.redhat.com/yum/1.5/RHEL/6/$basearch/
-* http://spacewalk.redhat.com/yum/1.5/Fedora/14/x86_64/
-* http://spacewalk.redhat.com/yum/1.5/Fedora/15/x86_64/
+* http://spacewalk.redhat.com/yum/1.6/RHEL/5/$basearch/
+* http://spacewalk.redhat.com/yum/1.6/RHEL/6/$basearch/
+* http://spacewalk.redhat.com/yum/1.6/Fedora/15/x86_64/
+* http://spacewalk.redhat.com/yum/1.6/Fedora/16/x86_64/
 
 with client repositories under
 
-* http://spacewalk.redhat.com/yum/1.5-client
-* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.5/openSUSE_11.4/
-* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.5/openSUSE_Factory/
-* http://miroslav.suchy.cz/spacewalk/debian (based on Spacewalk 1.4 code)
+* http://spacewalk.redhat.com/yum/1.6-client
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.6/openSUSE_11.4/
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.6/openSUSE_Factory/
+* http://miroslav.suchy.cz/spacewalk/debian
 
-Features & Enhancements in Spacewalk 1.5
+Features & Enhancements in Spacewalk 1.6
 ----------------------------------------
 
-* It is possible to edit schedule of taskomatic jobs via WebUI
-* AutoYaST Support
-* Fine-grained search (ability to disable fuzzy search)
-* The ``satellite-sync`` downloads rpm files in four concurrent threads
-* Spacewalk 1.5 can be installed on Fedora 15
-* Modified API calls:
-
-  * ``errata.listPackages`` returns file attribute
-  * ``user.getDetails`` returns ``use_pam`` attribute
-
+* IPv6 support: management and provisioning capabilities
+* Support for Fedora 16 (server and client)
+* `Kickstarting via Spacewalk Proxy with a CNAME <http://www.youtube.com/watch?v=3LPHYORuBBc>`_
+* ``spacewalk-repo-sync`` supports ``--include`` and ``--exclude`` options
 * New API calls:
 
-  * ``channel.software.setUserManagable``
-  * ``channel.software.isUserManagable``
-  * ``channel.listVendorChannels`` is now equivalent and preferred to ``channel.listRedHatChannels``
-  * ``errata.cloneAsOriginal``
+  * ``channel.software.getRepoSyncCronExpression``
+  * ``channel.software.listChannelRepos``
+  * ``channel.software.setDetails``
+  * ``channel.software.syncRepo``
+  * ``configchannel.deleteFileRevisions``
+  * ``configchannel.getFileRevision``
+  * ``configchannel.getFileRevisions``
+  * ``kickstart.disableProfile``
+  * ``kickstart.isProfileDisabled``
+  * ``kickstart.keys.update``
+  * ``system.custominfo.updateKey``
+  * ``system.deleteGuestProfiles``
+  * ``system.deleteTagFromSnapshot``
+  * ``system.getScriptActionDetails``
+  * ``system.provisioning.snapshot.addTagToSnapshot``
+  * ``system.tagLatestSnapshot``
+
+* OSAD improvements
+* Security fixes for following CVEs:
+
+  * CVE-2011-1594
+  * CVE-2011-2919
+  * CVE-2011-2920
+  * CVE-2011-2927
+  * CVE-2011-3344
+
+* ``rhn-virtualization`` supports RHEV 3 hosts
+* ``spacewalk-reports`` supports ``--where-<column-id>`` option to filter records
+* ``spacecmd`` enhancements and bugfixes
+* Preliminary support for cobbler 2.2
 
 Contributors
 ------------
 
 Our thanks go to the community members who contributed to this release:
 
-* Andreas Rogge
+* Andy Speagle
 * Aron Parsons
+* Christian Berendt
+* Colin Coe
+* David Nutter
 * Ionuț Arțăriși
-* Jan Brázdil
 * Johannes Renner
 * Jonathan Hoser
-* Julian Einwag
+* Joshua Roys
+* Luca Villa
 * Marcelo Moreira de Mello
-* Mario Schugowski
-* Matteo Sessa
+* Martin Osvald
 * Michael Calmer
-* Paresh Mutha
-* Šimon Lukašík
+* Pierre Casenove
+* Satoru SATOH
+* Steve Hardy
+* Sven Mueller
+* Tasos Papaioannou
 * Uwe Gansert
-* Ville Salmela
 
 https://fedorahosted.org/spacewalk/wiki/ContributorList
 
 Some statistics
 ---------------
 
-In Spacewalk 1.5, we've seen
+In Spacewalk 1.6, we've seen
 
-* 81 bugs solved
-* 624 changesets committed
-* 904 commits done
+* 177 bugs solved
+* 1025 changesets committed
+* 1515 commits done
 
 Thank you for using Spacewalk! Keep the patches flowing!
