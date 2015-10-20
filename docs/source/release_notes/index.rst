@@ -1,26 +1,60 @@
 Release Notes
 =============
 
-Contents:
+The Spacewalk team is happy to announce another release of Spacewalk. In a few hours, Spacewalk 0.5 will be available for install. As with previous releases, 0.3 will no longer be available.
 
-.. toctree::
-   :maxdepth: 1
+NOTE: upgrades are not yet available for 0.5. We hope to have these instructions ready later this week.
 
-   2.3
-   2.2
-   2.1
-   2.0
-   1.9
-   1.8
-   1.7
-   1.6
-   1.5
-   1.4
-   1.3
-   1.2
-   1.1
-   1.0
-   0.8
-   0.7
-   0.6
-   0.5
+Also note, that the URL for the repo has changed. The *OLD* url was:
+
+* http://spacewalk.redhat.com/yum/0.4/rhel/5Server/<arch>
+* http://spacewalk.redhat.com/yum/0.4/fedora/9/<arch>
+
+The *NEW* url is:
+
+* http://spacewalk.redhat.com/yum/0.5/RHEL/5/<arch>/os/
+* http://spacewalk.redhat.com/yum/0.5/Fedora/10/<arch>/os/
+
+Features & Enhancements
+-----------------------
+
+* Spacewalk 0.5 is now installable on Fedora 10!!
+* repomd generation refactored to be a Taskomatic process
+* you can edit your pre/post kickstart scripts in our new scripts editor:
+
+  * http://tinyurl.com/editarea-ks-scripts
+
+* as well as edit cobbler snippets with the same editor:
+
+  * http://tinyurl.com/editarea-cobbler-snippets
+
+* more API work mostly in the channel.software namespace with bug fixes in other areas.
+
+  * https://fedorahosted.org/spacewalk/wiki/ApiAdditions
+
+Bugs fixed
+----------
+
+This release `fixed 91 bugs <http://tinyurl.com/dmszqj>`_.
+
+Known issues
+------------
+
+* NO UPGRADES AVAILABLE YET
+* jabberd 2.2 fails on el5 installs. if you want to use osa-dispatcher on el5, you need to do the following:
+
+  * uninstall jabberd 2.2
+  * install jabberd 2.0
+  * use 2.0 configs
+  * restart both jabberd and osa-dispatcher
+
+Community
+---------
+
+A special thanks goes out to Colin Coe for adding the ability to edit kickstart scripts and cobbler snippets in the UI, and to James Bowes for his patches to tito the spacewalk build tool
+
+* http://fedorahosted.org/spacewalk/wiki/Tito
+* http://fedorahosted.org/spacewalk/wiki/ContributorList
+
+...it works on Fedora too :D
+

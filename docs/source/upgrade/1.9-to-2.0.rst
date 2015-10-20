@@ -1,4 +1,0 @@
-.. _upgrade-1.9-to-2.0:
-
-Upgrading from Spacewalk 1.9 to 2.0
-===================================
