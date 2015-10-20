@@ -1,74 +1,72 @@
 Release Notes
 =============
 
-Spacewalk 1.4 is now available for download from
+We are happy to announce the release 1.5 of Spacewalk, a systems management solution.
 
-* http://spacewalk.redhat.com/yum/1.4/RHEL/5/$basearch/
-* http://spacewalk.redhat.com/yum/1.4/RHEL/6/$basearch/
-* http://spacewalk.redhat.com/yum/1.4/Fedora/13/$basearch/
-* http://spacewalk.redhat.com/yum/1.4/Fedora/14/$basearch/
+The download locations are
 
-depending on your operating system, with client repositories under
+* http://spacewalk.redhat.com/yum/1.5/RHEL/5/$basearch/
+* http://spacewalk.redhat.com/yum/1.5/RHEL/6/$basearch/
+* http://spacewalk.redhat.com/yum/1.5/Fedora/14/x86_64/
+* http://spacewalk.redhat.com/yum/1.5/Fedora/15/x86_64/
 
-* http://spacewalk.redhat.com/yum/1.4-client/Fedora/13
-* http://spacewalk.redhat.com/yum/1.4-client/Fedora/14
-* http://spacewalk.redhat.com/yum/1.4-client/RHEL/5
-* http://spacewalk.redhat.com/yum/1.4-client/RHEL/6
-* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.4/openSUSE_11.4/
-* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.4/openSUSE_Factory/
-* http://miroslav.suchy.cz/spacewalk/debian
+with client repositories under
 
-Features & Enhancements in Spacewalk 1.4
+* http://spacewalk.redhat.com/yum/1.5-client
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.5/openSUSE_11.4/
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.5/openSUSE_Factory/
+* http://miroslav.suchy.cz/spacewalk/debian (based on Spacewalk 1.4 code)
+
+Features & Enhancements in Spacewalk 1.5
 ----------------------------------------
 
-* client packages for Debian
-* client packages for OpenSuse
+* It is possible to edit schedule of taskomatic jobs via WebUI
+* AutoYaST Support
+* Fine-grained search (ability to disable fuzzy search)
+* The ``satellite-sync`` downloads rpm files in four concurrent threads
+* Spacewalk 1.5 can be installed on Fedora 15
+* Modified API calls:
 
-  * support for `IDN <http://en.wikipedia.org/wiki/Internationalized_domain_name>`_ (but RHN Tools part)
+  * ``errata.listPackages`` returns file attribute
+  * ``user.getDetails`` returns ``use_pam`` attribute
 
-* you can now have Spacewalk server and clients, whose hostnames contains non latin domain name.
-* issues in PostgreSQL backend, reported by user, were fixed. 
+* New API calls:
 
-  * `PostgreSQL status <https://fedorahosted.org/spacewalk/wiki/PostgreSQL>`_
+  * ``channel.software.setUserManagable``
+  * ``channel.software.isUserManagable``
+  * ``channel.listVendorChannels`` is now equivalent and preferred to ``channel.listRedHatChannels``
+  * ``errata.cloneAsOriginal``
 
-* system history reports were added in ``spacewalk-reports``
-* ``spacewalk-repo-sync`` now automatically create errata from updateinfo
+Contributors
+------------
 
-Spacewalk 1.4 contains support for ``apt-get`` plug-in. An ``apt-get`` plug-in client package is available at http://miroslav.suchy.cz/spacewalk/debian/
+Our thanks go to the community members who contributed to this release:
 
-Feel free to try it and report any issues. This repo contains apt with spacewalk patches.
-
-For more information check: https://fedorahosted.org/spacewalk/wiki/RegisteringClients#Debian
-
-Community contributors
-----------------------
-
-We thank the community members who contributed to this release:
-
+* Andreas Rogge
 * Aron Parsons
-* Dale Bewley
-* Jerome Fenal
+* Ionuț Arțăriși
+* Jan Brázdil
 * Johannes Renner
-* John van Zantvoort
-* Luc de Louw
+* Jonathan Hoser
+* Julian Einwag
 * Marcelo Moreira de Mello
-* mareklaane
+* Mario Schugowski
+* Matteo Sessa
 * Michael Calmer
 * Paresh Mutha
 * Šimon Lukašík
-* Trent Johnson
 * Uwe Gansert
-* ypoyarko
+* Ville Salmela
 
 https://fedorahosted.org/spacewalk/wiki/ContributorList
 
-Bug fixes and commits
----------------------
+Some statistics
+---------------
 
-In Spacewalk 1.4 there were:
+In Spacewalk 1.5, we've seen
 
-* 68 bugs solved
-* 634 changesets committed
-* 899 commits done
+* 81 bugs solved
+* 624 changesets committed
+* 904 commits done
 
-Enjoy using Spacewalk!
+Thank you for using Spacewalk! Keep the patches flowing!
