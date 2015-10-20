@@ -1,49 +1,86 @@
 Release Notes
 =============
 
-Spacewalk 1.0 has been released!
+Spacewalk 1.1 has been released!
 
 Server:
 
-http://spacewalk.redhat.com/yum/1.0/RHEL/5/<arch>/
-http://spacewalk.redhat.com/yum/1.0/Fedora/11/<arch>/
-http://spacewalk.redhat.com/yum/1.0/Fedora/12/<arch>/
+* http://spacewalk.redhat.com/yum/1.1/RHEL/5/<arch>/
+* http://spacewalk.redhat.com/yum/1.1/Fedora/12/<arch>/
+* http://spacewalk.redhat.com/yum/1.1/Fedora/13/<arch>/
 
 Client:
 
-http://spacewalk.redhat.com/yum/1.0-client/RHEL/5/<arch>/
-http://spacewalk.redhat.com/yum/1.0-client/Fedora/11/<arch>/
-http://spacewalk.redhat.com/yum/1.0-client/Fedora/12/<arch>/
+* http://spacewalk.redhat.com/yum/1.1-client/RHEL/5/<arch>/
+* http://spacewalk.redhat.com/yum/1.1-client/Fedora/12/<arch>/
+* http://spacewalk.redhat.com/yum/1.1-client/Fedora/13/<arch>/
 
-Features & Enhancements
------------------------
+Features and enhancements
+-------------------------
 
-* RHN Client code improvements. Now using python-ugdev and dropped HAL.
-* `SpacewalkHostnameRename script <https://fedorahosted.org/spacewalk/wiki/SpacewalkHostnameRename>`_ for re-configuration of Spacewalk server, in case its hostname or IP has changed
-* Many `ApiAdditions <https://fedorahosted.org/spacewalk/wiki/ApiAdditions>`_ as well as improvements to existing API calls.
-* RHN Proxy now uses mod_wsgi
-* Tomcat 6 for Fedora 12
-* Delete Systems script
-* Many bugfixes and general code clean up to support 1.0 release
+* First Spacewalk release built in a `publicly available build system <http://koji.spacewalkproject.org/koji>`_.
+* Spacewalk 1.1 runs on Fedora 13
+* Introduction of `spacecmd <https://fedorahosted.org/spacewalk/wiki/spacecmd>`_, a command line interface to Spacewalk.
+* Support for `synchronization of comps files <https://fedorahosted.org/spacewalk/wiki/Features/CompsSyncing>`_.
+* support for staging content - ability to have all updates pulled off Spacewalk onto registered systems prior to the start of maintenance window
+* support for `eliminating orphaned (duplicate) profiles <https://fedorahosted.org/spacewalk/wiki/DuplicateProfiles>`_.
+* new API calls:
+
+  * ``channel.software.getChannelLastBuildById``
+  * ``configchannel.listSubscribedSystems``
+  * ``kickstart.profile.downloadRenderedKickstart``
+  * ``org.setSoftwareFlexEntitlements``
+  * ``schedule.rescheduleActions``
+  * ``system.convertToFlexEntitlement``
+  * ``system.deletePackageProfile``
+  * ``system.deleteSystem``
+  * ``system.listDuplicatesByHostname``
+  * ``system.listDuplicatesByIp``
+  * ``system.listDuplicatesByMac``
+  * ``system.listEligibleFlexGuests``
+  * ``system.listFlexGuests``
+  * ``system.listLatestAvailablePackage``
+  * ``system.listPackageProfiles``
+  * ``systemgroup.scheduleApplyErrataToActive``
+
+* localization updates
 
 Known issues
 ------------
 
-* Provider GPG key is not sometimes recognized and packages shows up as unknown Provider.
-* PostgreSQL support still does not work. We will need help with moving this forward.
-* Documentation search does not work, other search are unaffected.
+* Wrong tomcat6 directory permissions on Fedora 13
 
-Community
----------
+  * https://bugzilla.redhat.com/show_bug.cgi?id=574593
+  * https://bugzilla.redhat.com/show_bug.cgi?id=586364
+  * https://bugzilla.redhat.com/show_bug.cgi?id=605335
 
-We greatly appreciate the contributions the community has made to this release. Thank you very much.
+* workaround:
 
-Colin Coe
-James Hogarth
-Jason Lawer
-Joshua Roys
-Lukas Durfina
-Simon Lukasik
+  * ``chmod g+w /var/log/tomcat6 /etc/tomcat6/Catalina/localhost /var/cache/tomcat6 /var/cache/tomcat6/temp /var/cache/tomcat6/work``
 
-https://fedorahosted.org/spacewalk/wiki/ContributorList
+* cobbler - related SELinux denials on Fedora 12 and Fedora 13:
 
+  * https://bugzilla.redhat.com/show_bug.cgi?id=620503
+  * https://bugzilla.redhat.com/show_bug.cgi?id=621095
+  * solution: install updated selinux-policy-targeted as noted in the above bugs
+
+* Deprecation warning during osa-dispatcher start on Fedora 12 and Fedora 13:
+
+  * https://bugzilla.redhat.com/show_bug.cgi?id=621204
+  * https://bugzilla.redhat.com/show_bug.cgi?id=621206
+
+* Documentation search does not work, other searches are unaffected
+
+Contributors
+------------
+
+Thank you goes out to the following people who contributed to Spacewalk 1.1 release:
+
+* Aron Parsons
+* Colin Coe
+* James Hogarth
+* Joshua Roys
+* Lukas Durfina
+* Maxim Burgerhout
+* Paul Morgan
+* Satoru SATOH
