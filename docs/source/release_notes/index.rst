@@ -1,106 +1,106 @@
 Release Notes
 =============
 
-Your wait is now over as we are announcing the release 1.9 of Spacewalk, a systems management solution.
+We are proudly announcing the release 2.0 of Spacewalk, a systems management solution.
 
 The download locations are
 
-http://yum.spacewalkproject.org/1.9/RHEL/5/i386/
-http://yum.spacewalkproject.org/1.9/RHEL/5/x86_64/
-http://yum.spacewalkproject.org/1.9/RHEL/6/i386/
-http://yum.spacewalkproject.org/1.9/RHEL/6/x86_64/
-http://yum.spacewalkproject.org/1.9/Fedora/17/x86_64/
-http://yum.spacewalkproject.org/1.9/Fedora/18/x86_64/
+* http://yum.spacewalkproject.org/2.0/RHEL/5/
+* http://yum.spacewalkproject.org/2.0/RHEL/6/
+* http://yum.spacewalkproject.org/2.0/Fedora/18/
+* http://yum.spacewalkproject.org/2.0/Fedora/19/
 
 with client repositories under
 
-http://yum.spacewalkproject.org/1.9-client
-http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.9/openSUSE_12.2/
-http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.9/openSUSE_12.3/
-http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/1.9/openSUSE_Factory/
+* http://yum.spacewalkproject.org/2.0-client/RHEL/5/
+* http://yum.spacewalkproject.org/2.0-client/RHEL/6/
+* http://yum.spacewalkproject.org/2.0-client/Fedora/18/
+* http://yum.spacewalkproject.org/2.0-client/Fedora/19/
 
-Features & Enhancements in Spacewalk 1.9
+SUSE Linux client packages can be found here
+
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.0/openSUSE_12.2
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.0/openSUSE_12.3
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.0/openSUSE_Factory
+
+Features & Enhancements in Spacewalk 2.0
 ----------------------------------------
 
-* Spacewalk runs on Fedora 18
-* ABRT enhancements/improvements to make more functional
+* Spacewalk runs on Fedora 19, support for Fedora 17 has been dropped
+* Auditing feature which enables tracking information like "Who created this user?" or "Who deleted this server?"
+
+  * https://fedorahosted.org/spacewalk/wiki/AuditReporting
+
+* Managed external PosgreSQL database
+
+  * https://fedorahosted.org/spacewalk/wiki/PostgreSQLServerSetup#pg-standalone
+
+* Further ABRT enhancements/improvements to make ABRT more functional
 
   * https://fedorahosted.org/spacewalk/wiki/HowToUseCrashReporting
 
 * SCAP improvements
 
-  * Support for XCCDF 1.2
-  * Allow ``--cpe`` command-line argument to oscap
+  * The latest Spacewalk is able to aggregate full SCAP results, including the XCCDF Result file, OVAL Result Files and OpenSCAP HTML Report. These files are available for user download at the scan's details page.
+  * This feature needs to be turned on in an organization's Configuration settings
 
-* WebUI Login extended for expired Spacewalk Certificates, from 7 days to 30 days [Satellite driven]
-* WebUI Enhancements
+* ISS Features
 
-  * Display Activation key used to register, on system profile page
-  * Highlightning of hovered row in tables
-  * CSS rules for printing of WebUI pages
-  * Link associated errata to package from package overview page
-  * Added CVS download/report of Software Channel Entitlements
+  * Custom-channel-permissions and org-trusts synchronized
+  * New WebUI for managing ISS configuration (see Admin\ISS Configuration)
+  * https://fedorahosted.org/spacewalk/wiki/ISSSyncPermissions
 
-* Bug 877451 - yum-like per-repo configuration for ``spacewalk-repo-sync``
-* ``rhnmd`` works with Fedora systemd Service for startup
-* Move to newer tomcat for Fedora based Spacewalk
-* Bug 878216 - make ``rhncfg`` diff output configurable
-* Updates to ``spacewalk-repo-sync``:
-
-  * Syncing over SSL and IPv6 works correctly
-  * Sync Kickstart Trees (Distributions)
-
-* New features related to Kickstarting systems:
-
-  * Allow the selection of a primary network interface from hardware profile
-  * Allow Kickstart Profile to automatically update to newest applicable Distribution
-
-* New reports added to spacewalk-reports:
-
-  * ``custom-info``
-  * ``inactive-systems``
-  * ``inventory (modified)``
-  * ``packages-updates-all``
-  * ``packages-updates-newest``
-  * ``system-currency``
-  * ``system-groups``
-  * ``system-groups-keys``
-  * ``system-groups-systems``
-  * ``system-groups-users``
-  * ``system-packages-installed``
-
+* WebUI is now smoother thanks to CSS3 (if you are using IE8 and lower you won't see this)
+* Plenty of small enhancements like overview page for Physical systems only
 * Modified API calls:
 
-  * ``channel.software.clone``
-  * ``org.delete``
-  * ``kickstart.profile.setAdvancedOptions``
+  * ``activationkey.addChildChannels``
+  * ``activationkey.setDetails``
   * ``errata.setDetails``
-  * ``errata.findByCve``
+  * ``kickstart.createProfile``
+  * ``kickstart.profile.addScript``
+  * ``proxy.listAvailableProxyChannels``
+  * ``system.listSystemEvents``
+  * ``system.scheduleApplyErrata``
+  * ``system.schedulePackageInstall``
+  * ``system.scheduleHardwareRefresh``
+  * ``system.scheduleReboot``
+  * ``system.scheduleScriptRun``
+  * ``system.scheduleSyncPackagesWithSystem``
+  * ``system.crash.getCrashOverview``
+  * ``system.crash.listSystemCrashFiles``
+  * ``systemgroup.scheduleApplyErrataToActive``
 
 * New API calls:
 
-  * Everything under system.crash, including:
-
-    * ``system.crash.deleteCrash``
-    * ``system.crash.getCrashFile``
-    * ``system.crash.getCrashFileUrl``
-    * ``system.crash.getLastReportDate``
-    * ``system.crash.getTotalCrashCount``
-    * ``system.crash.getUniqueCrashCount``
-    * ``system.crash.listSystemCrashFiles``
-    * ``system.crash.listSystemCrashes``
-
-  * ``kickstart.importFile (variant)``
-  * ``kickstart.createProfile (variant)``
-  * ``kickstart.createProfileWithCustomUrl (variant)``
-  * ``kickstart.importRawFile (variant)``
-  * ``kickstart.profile.getUpdateType``
-  * ``kickstart.profile.setUpdateType``
-  * ``system.deleteSystem (variant)``
-  * ``system.listAllInstallablePackages``
-  * ``system.setPrimaryInterface``
-  * ``org.getCrashFileSizeLimit``
-  * ``org.setCrashFileSizeLimit``
+  * ``sync.master.addToMaster``
+  * ``sync.master.create``
+  * ``sync.master.delete``
+  * ``sync.master.getDefaultMaster``
+  * ``sync.master.getMaster``
+  * ``sync.master.getMasterByLabel``
+  * ``sync.master.getMasterOrgs``
+  * ``sync.master.getMasters``
+  * ``sync.master.makeDefault``
+  * ``sync.master.mapToLocal``
+  * ``sync.master.setCaCert``
+  * ``sync.master.setMasterOrgs``
+  * ``sync.master.unsetDefaultMaster``
+  * ``sync.master.update``
+  * ``sync.slave.create``
+  * ``sync.slave.delete``
+  * ``sync.slave.getAllowedOrgs``
+  * ``sync.slave.getSlave``
+  * ``sync.slave.getSlaveByName``
+  * ``sync.slave.getSlaves``
+  * ``sync.slave.setAllowedOrgs``
+  * ``sync.slave.update``
+  * ``system.crash.createCrashNote``
+  * ``system.crash.deleteCrashNote``
+  * ``system.crash.getCrashCountInfo``
+  * ``system.crash.getCrashNotesForCrash``
+  * ``system.crash.getCrashOverview``
+  * ``system.crash.getCrashesByUuid``
 
 The up-to-date API documentation can be found at http://www.spacewalkproject.org/documentation/api/
 
@@ -110,30 +110,43 @@ Contributors
 Our thanks go to the community members who contributed to this release:
 
 * Aron Parsons
-* David Juran
-* Duncan Mac-Vicar
-* Joerg Steffens
+* Avi Miller
+* Baptiste Agasse
+* Bram Mertens
+* Christopher Duryee
+* Dimitar Yordanov
+* Duncan Mac-Vicar P
+* Hubert Mantel
+* James Slagle
+* Jiri Mikulka
 * Johannes Renner
-* Jose Simonelli
+* John Matthews
+* Lukas Pramuk
 * Marcelo Moreira de Mello
-* Mark Huth
+* Matej Kollar
+* Matt Micene
 * Michael Calmer
+* Miroslav Suchý
 * Neha Rawat
-* Nigel Jones
 * Paresh Mutha
-* Pierre Casenove
-* Zailo Leite
+* Pavel Studenik
+* Shannon Hughes
+* Silvio Moioli
+* Simon Lukasik
+* Trent Johnson
+
+Special thanks to Jan Pazdziora.
 
 https://fedorahosted.org/spacewalk/wiki/ContributorList
 
 Some statistics
 ---------------
 
-In Spacewalk 1.9, we've seen
+In Spacewalk 2.0, we've seen
 
-* 86 bugs fixed
-* 676 changesets committed
-* 1055 commits done
+* 140 bugs fixed
+* 921 changesets committed
+* 1552 commits done
 
 User community, reporting issues
 --------------------------------
