@@ -1,106 +1,66 @@
 Release Notes
 =============
 
-We are proudly announcing the release 2.0 of Spacewalk, a systems management solution.
+We are proudly announcing the release 2.1 of Spacewalk, a systems management solution.
 
 The download locations are
 
-* http://yum.spacewalkproject.org/2.0/RHEL/5/
-* http://yum.spacewalkproject.org/2.0/RHEL/6/
-* http://yum.spacewalkproject.org/2.0/Fedora/18/
-* http://yum.spacewalkproject.org/2.0/Fedora/19/
+* http://yum.spacewalkproject.org/2.1/RHEL/5/
+* http://yum.spacewalkproject.org/2.1/RHEL/6/
+* http://yum.spacewalkproject.org/2.1/Fedora/19/
+* http://yum.spacewalkproject.org/2.1/Fedora/20/
 
 with client repositories under
 
-* http://yum.spacewalkproject.org/2.0-client/RHEL/5/
-* http://yum.spacewalkproject.org/2.0-client/RHEL/6/
-* http://yum.spacewalkproject.org/2.0-client/Fedora/18/
-* http://yum.spacewalkproject.org/2.0-client/Fedora/19/
+* http://yum.spacewalkproject.org/2.1-client/RHEL/5/
+* http://yum.spacewalkproject.org/2.1-client/RHEL/6/
+* http://yum.spacewalkproject.org/2.1-client/Fedora/19/
+* http://yum.spacewalkproject.org/2.1-client/Fedora/20/
 
 SUSE Linux client packages can be found here
 
-* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.0/openSUSE_12.2
-* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.0/openSUSE_12.3
-* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.0/openSUSE_Factory
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.1/openSUSE_12.3/
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.1/openSUSE_13.1/
+* http://download.opensuse.org/repositories/systemsmanagement:/spacewalk:/2.1/openSUSE_Factory/
 
-Features & Enhancements in Spacewalk 2.0
+Features & Enhancements in Spacewalk 2.1
 ----------------------------------------
 
-* Spacewalk runs on Fedora 19, support for Fedora 17 has been dropped
-* Auditing feature which enables tracking information like "Who created this user?" or "Who deleted this server?"
+* Spacewalk runs on Fedora 20, support for Fedora 18 has been dropped
+* New UI look and feel (big thanks to SUSE upstream contributors)
 
-  * https://fedorahosted.org/spacewalk/wiki/AuditReporting
+  * Twitter Bootstrap 3.0 integration.
+  * Responsive design works on desktops, tablets and phones.
+  * New date-picker will make scheduling events joyful.
+  * Password strength meter.
 
-* Managed external PosgreSQL database
+* Support for using SSL for connections to external/managed PostgreSQL
 
-  * https://fedorahosted.org/spacewalk/wiki/PostgreSQLServerSetup#pg-standalone
-
-* Further ABRT enhancements/improvements to make ABRT more functional
-
-  * https://fedorahosted.org/spacewalk/wiki/HowToUseCrashReporting
+  * https://fedorahosted.org/spacewalk/wiki/HowToPostgreSQLoverSSL
 
 * SCAP improvements
 
-  * The latest Spacewalk is able to aggregate full SCAP results, including the XCCDF Result file, OVAL Result Files and OpenSCAP HTML Report. These files are available for user download at the scan's details page.
-  * This feature needs to be turned on in an organization's Configuration settings
+  * Added tailoring support to the Spacewalk (OpenSCAP enabled) client
+  * Enabled easy comparison between various SCAP scans
 
-* ISS Features
+* Identity management (IPA) integration
 
-  * Custom-channel-permissions and org-trusts synchronized
-  * New WebUI for managing ISS configuration (see Admin\ISS Configuration)
-  * https://fedorahosted.org/spacewalk/wiki/ISSSyncPermissions
+  * https://fedorahosted.org/spacewalk/wiki/SpacewalkAndIPA
 
-* WebUI is now smoother thanks to CSS3 (if you are using IE8 and lower you won't see this)
-* Plenty of small enhancements like overview page for Physical systems only
-* Modified API calls:
-
-  * ``activationkey.addChildChannels``
-  * ``activationkey.setDetails``
-  * ``errata.setDetails``
-  * ``kickstart.createProfile``
-  * ``kickstart.profile.addScript``
-  * ``proxy.listAvailableProxyChannels``
-  * ``system.listSystemEvents``
-  * ``system.scheduleApplyErrata``
-  * ``system.schedulePackageInstall``
-  * ``system.scheduleHardwareRefresh``
-  * ``system.scheduleReboot``
-  * ``system.scheduleScriptRun``
-  * ``system.scheduleSyncPackagesWithSystem``
-  * ``system.crash.getCrashOverview``
-  * ``system.crash.listSystemCrashFiles``
-  * ``systemgroup.scheduleApplyErrataToActive``
-
+* Plenty of small enhancements and fixes
+* This is the last release of Spacewalk for RHEL5.
 * New API calls:
 
-  * ``sync.master.addToMaster``
-  * ``sync.master.create``
-  * ``sync.master.delete``
-  * ``sync.master.getDefaultMaster``
-  * ``sync.master.getMaster``
-  * ``sync.master.getMasterByLabel``
-  * ``sync.master.getMasterOrgs``
-  * ``sync.master.getMasters``
-  * ``sync.master.makeDefault``
-  * ``sync.master.mapToLocal``
-  * ``sync.master.setCaCert``
-  * ``sync.master.setMasterOrgs``
-  * ``sync.master.unsetDefaultMaster``
-  * ``sync.master.update``
-  * ``sync.slave.create``
-  * ``sync.slave.delete``
-  * ``sync.slave.getAllowedOrgs``
-  * ``sync.slave.getSlave``
-  * ``sync.slave.getSlaveByName``
-  * ``sync.slave.getSlaves``
-  * ``sync.slave.setAllowedOrgs``
-  * ``sync.slave.update``
-  * ``system.crash.createCrashNote``
-  * ``system.crash.deleteCrashNote``
-  * ``system.crash.getCrashCountInfo``
-  * ``system.crash.getCrashNotesForCrash``
-  * ``system.crash.getCrashOverview``
-  * ``system.crash.getCrashesByUuid``
+  * ``channel.software.listErrataNeedingSync()``
+  * ``channel.software.syncErrata()``
+  * ``channel.software.updateRepoLabel()``
+  * ``kickstart.profile.orderScripts()``
+  * ``kickstart.profile.software.setSoftwareList()``
+  * ``org.getPolicyForScapFileUpload()``
+  * ``org.getPolicyForScapResultDeletion()``
+  * ``org.setPolicyForScapFileUpload()``
+  * ``org.setPolicyForScapResultDeletion()``
+  * ``system.scap.deleteXccdfScan()``
 
 The up-to-date API documentation can be found at http://www.spacewalkproject.org/documentation/api/
 
@@ -111,42 +71,39 @@ Our thanks go to the community members who contributed to this release:
 
 * Aron Parsons
 * Avi Miller
-* Baptiste Agasse
-* Bram Mertens
+* Bo Maryniuk
 * Christopher Duryee
+* Cynthia Sanchez
+* David Juran
 * Dimitar Yordanov
 * Duncan Mac-Vicar P
-* Hubert Mantel
-* James Slagle
+* Flavio Castelli
+* Gregor Gruener
+* Jan Pazdziora
 * Jiri Mikulka
 * Johannes Renner
-* John Matthews
-* Lukas Pramuk
-* Marcelo Moreira de Mello
-* Matej Kollar
-* Matt Micene
+* Mark Huth
+* Maximilian Meister
 * Michael Calmer
 * Miroslav Suchý
-* Neha Rawat
 * Paresh Mutha
-* Pavel Studenik
+* Paul Robert Marino
+* Peter Gervase
 * Shannon Hughes
 * Silvio Moioli
 * Simon Lukasik
-* Trent Johnson
-
-Special thanks to Jan Pazdziora.
+* Tasos Papaioannou
 
 https://fedorahosted.org/spacewalk/wiki/ContributorList
 
 Some statistics
 ---------------
 
-In Spacewalk 2.0, we've seen
+In Spacewalk 2.1, we've seen
 
-* 140 bugs fixed
-* 921 changesets committed
-* 1552 commits done
+* 201 bugs fixed
+* 1715 changesets committed
+* 2357 commits done
 
 User community, reporting issues
 --------------------------------
