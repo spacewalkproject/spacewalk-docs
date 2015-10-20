@@ -14,13 +14,13 @@ Contents:
    :numbered:
 
    release_notes/index
-.. installation/index
-.. upgrade/index
-.. getting_started/index
-.. client_configuration/index
-.. user/index
-.. reference/index
-.. proxy/index
+   installation/index
+   upgrade/index
+   getting_started/index
+   client_configuration/index
+   user/index
+   reference/index
+   proxy/index
 
 Copyright and Legal Notices
 ===========================
