@@ -1,56 +1,64 @@
 Release Notes
 =============
 
-Spacewalk 0.6 is finally here! In a few hours, Spacewalk 0.6 will be available for installing. With this release, as with previous releases, Spacewalk 0.4 will no longer be available for download.
+Spacewalk 0.7 is finally here!
 
-* http://spacewalk.redhat.com/yum/0.6/RHEL/5/<arch>/os/
-* http://spacewalk.redhat.com/yum/0.6/Fedora/10/<arch>/os/
-* http://spacewalk.redhat.com/yum/0.6/Fedora/11/<arch>/os/
+http://spacewalk.redhat.com/yum/0.7/RHEL/5/<arch>/
+http://spacewalk.redhat.com/yum/0.7/Fedora/11/<arch>/
+http://spacewalk.redhat.com/yum/0.7/Fedora/12/<arch>/
+
+For the first time we split server and client part. Client repo is:
+
+http://spacewalk.redhat.com/yum/0.7-client/RHEL/5/<arch>/
+http://spacewalk.redhat.com/yum/0.7-client/Fedora/11/<arch>/
+http://spacewalk.redhat.com/yum/0.7-client/Fedora/12/<arch>/
 
 Features & Enhancements
 -----------------------
 
-* Spacewalk 0.6 is available for Fedora 11!
-* support for SHA256 in rpm
-* large (2+GB) rpm support (requires rpm 4.6)
-* ability to import a yum repo into a channel https://fedorahosted.org/spacewalk/wiki/UploadFedoraContent
-* `script based reporting <http://bit.ly/NyCrj>`_
-* hopefully a better jabberd experience than in Spacewalk 0.5
-* KVM support
-* and more APIs:
+* new script ``spacewalk-report`` allows you to create reports with output to CSV file
 
-  * ``errata.delete``
-  * ``channel.software.uploadPackage``
-  * ``monitoring.*``
-  * ``org.list*Entitlements``
-  * ``packages.getDetails``
-  * ``system.config.scheduleImport``
+  * https://fedorahosted.org/spacewalk/wiki/Features/ScriptBasedReporting
 
-Bugs fixed
-----------
+* pages with erratas have column with links to CVE description, erratas can be filtered by its type
 
-This release `fixed approximately 100 bugs <http://bit.ly/14ahTW>`_
+  * https://fedorahosted.org/spacewalk/wiki/Features/WebuiErrataAndCvesEnhancements
+
+* Spacewalk can be installed on Fedora 12
+* Top level package spacewalk do not exists any more. It has been split into ``spacewalk-oracle`` and ``spacewalk-postgresql``, which depends on oracle or postgresql library.
+
+  * Note: postgresql version is highly experimental.
+
+* Spacewalk now tracks date and time of package installation
+* Config channels now can handle symlinks.
+* Support for WebUI based KVM guest management & provisioning.
+* New script "monitoring-data-cleanup" allows you to delete old monitoring data.
+* New script "NOCpulse-ini" allows you edit NOCpulse.ini configuration file.
+* Base client packages are now in Fedora. That means you are now able to register Fedora machine to Spacewalk, without setting up additional repository.
+* Spacewalk repositories have been split to server and client parts.
+* Client tools now can report diff in selinux context.
+* Satellite-sync improvements.
+* API call system.listPackages now return additional field "installtime".
+
+...and of course many bugfixes
 
 Known issues
 ------------
 
-* PostgreSQL support does not work, but the infrastructure has been committed. We will need help with moving this forward.
+* PostgreSQL support still does not work. We will need help with moving this forward.
 * Fedora GPG key not recognized by rhnPackageKey table, packages will show up as unknown Provider.
 * Documentation search does not work, other search are unaffected.
+* The version of rhnsd in this release (rhnsd-4.5.16-1) does not work.
 
 Community
 ---------
 
 We greatly appreciate the contributions the community has made to this release. Thank you very much.
 
-* Gurjeet Singh
+* Colin Coe
+* David Nutter
 * Joshua Roys
-* Mark Chappell
-* Maxim Burgerhout
-* Muhammad Farrukh
-* Satoru SATOH
-* Tom Lane
-* Vikram Rai
+* Lukáš Ďurfina
 
 http://fedorahosted.org/spacewalk/wiki/ContributorList
 
